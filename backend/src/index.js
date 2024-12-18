@@ -15,17 +15,19 @@ const cors = require('cors');
 
 connectDB();
 
-app.use(express.json());
 
 app.use(cors({
-    origin: 'http://localhost:4200', 
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    credentials: true, 
-  }));
+  origin: 'http://localhost:4200', 
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true,
+}));
+
   
 app.use(express.static(__dirname))
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false}))
+app.use(bodyParser.json({ limit: '150mb' }));
+app.use(bodyParser.urlencoded({ limit: '150mb', extended: true }));
+app.use(express.json());  // Mueve este después de bodyParser
+
 
 app.use(categoriaRoutes)
 app.use(ordenRoutes)

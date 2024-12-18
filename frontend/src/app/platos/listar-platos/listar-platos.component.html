@@ -2,39 +2,50 @@
 <div id="content">
     <section class="container mt-5">
         <div class="d-flex flex-column align-items-center">
-            <h1 class="fw-bold text-dark mb-4" style="font-size: 2.5rem;">Listar Platos</h1>
+            <h1 class="fw-bold text-dark mb-4">Listar Platillos</h1>
             <div class="col-12">
                 <div class="table-container">
-                    <table class="table">
+                    <table class="table table-striped">
                         <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Nombre</th>
-                                <th>Ingredientes</th>
-                                <th>Precio</th>
-                                <th>Categoría</th>
-                                <th class="text-center">Actualizar</th>
-                                <th class="text-center">Eliminar</th>
-                            </tr>
+                          <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Ingredientes</th>
+                            <th>Precio</th>
+                            <th>Imagen</th>
+                            <th>Actualizar</th>
+                            <th>Eliminar</th>
+                          </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let plato of platos; let i = index">
-                                <td>{{ i + 1 }}</td>
-                                <td class="text-uppercase">{{ plato.nombre }}</td>
-                                <td>{{ plato.ingredientes }}</td>
-                                <td>{{ plato.precio }}</td>
-                                <td>{{ plato.categoria }}</td>
-                                <td class="text-center">
-                                    <button [routerLink]="['/platos/update', plato._id]"
-                                        class="btn btn-primary">Actualizar</button>
-                                </td>
-                                <td class="text-center">
-                                    <button (click)="deletePlato(plato._id)" class="btn btn-danger">Eliminar</button>
-
-                                </td>
-                            </tr>
+                          <tr *ngFor="let plato of platos; let i = index">
+                            <td>{{ i + 1 }}</td>
+                            <td>{{ plato.nombre }}</td>
+                            <!-- Iterar sobre los ingredientes -->
+                            <td>
+                                <ul *ngIf="plato.ingredientes; else noIngredientes">
+                                  <li *ngFor="let ingrediente of plato.ingredientes">{{ ingrediente }}</li>
+                                </ul>
+                                <ng-template #noIngredientes>
+                                  <span>Sin ingredientes</span>
+                                </ng-template>
+                              </td>
+                              
+                            <td>{{ plato.precio }}</td>
+                            <td>
+                                {{'Sin imagen' }}
+                            </td>
+                              
+                            <td>
+                              <button class="btn btn-primary" [routerLink]="['/platos/update', plato._id]">Actualizar</button>
+                            </td>
+                            <td>
+                              <button class="btn btn-danger" (click)="eliminarPlato(plato._id)">Eliminar</button>
+                            </td>
+                            
+                          </tr>
                         </tbody>
-                    </table>
+                      </table>
                 </div>
                 <a class="btn btn-lg btn-warning mt-4" routerLink="/platos/add">Añadir</a>
             </div>

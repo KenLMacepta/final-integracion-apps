@@ -9,7 +9,7 @@ const PlatoSchema = new mongoose.Schema({
   },
 
   ingredientes: { 
-    type: String, 
+    type: [String], 
     required: true 
   },
 
@@ -19,7 +19,7 @@ const PlatoSchema = new mongoose.Schema({
   },
 
   imagenes: { 
-    type: String, 
+    type: [String], 
     required: true 
   },
 

@@ -1,56 +1,50 @@
 import { Component, OnInit } from '@angular/core';
+import { NavbarComponent } from '../../pages/navbar/navbar.component';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PlatoService } from '../../services/plato.service';
 import { Plato } from '../../models/plato';
-import { NavbarComponent } from '../../pages/navbar/navbar.component';
-import { ReactiveFormsModule } from '@angular/forms';
-
-import { FooterComponent,  } from '../../pages/footer/footer.component';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { FooterComponent } from '../../pages/footer/footer.component';
 
 @Component({
   selector: 'app-update-plato',
   standalone: true,
-  imports: [NavbarComponent, FooterComponent, ReactiveFormsModule],
+  imports: [NavbarComponent, ReactiveFormsModule, FooterComponent],
   templateUrl: './update-platos.component.html',
-  styleUrls: ['./update-platos.component.css']
+  styleUrl: './update-platos.component.css'
 })
 export class UpdatePlatoComponent implements OnInit {
   plato: Plato | undefined;
   platoForm: FormGroup;
 
   constructor(
-    private fb: FormBuilder, 
-    private route: ActivatedRoute, 
-    private platoService: PlatoService, 
-    private router: Router
+    private fb: FormBuilder, private route: ActivatedRoute, private platoService: PlatoService, private router: Router
   ) {
     this.platoForm = this.fb.group({
       nombre: ['', Validators.required],
-      descripcion: ['', Validators.required],
-      precio: ['', [Validators.required, Validators.min(0)]],
-    });
+      ingredientes: ['', Validators.required],
+      precio: ['', Validators.required],
+      imagen: [''],
+    })
   }
 
-  ngOnInit(): void {
-    this.cargarPlato();
-  }
-
-  cargarPlato(): void {
+  cargarPlato() {
     const platoId = this.route.snapshot.paramMap.get('id');
 
     if (platoId) {
-      this.platoService.getPlatos().subscribe({
+      this.platoService.getPlato(platoId).subscribe({
         next: (response: any) => {
-          this.plato = response.data;
+          console.log('Respuesta del servidor:', response);
+          this.plato = response.data; 
           if (this.plato) {
-            this.platoForm.patchValue({
-              nombre: this.plato.nombre,
-              ingredientes: this.plato.ingredientes,
-              precio: this.plato.precio,
-            });
+              this.platoForm.patchValue({
+                  nombre: this.plato.nombre,
+                  ingredientes: this.plato.ingredientes,
+                  precio: this.plato.precio,
+                  imagen: this.plato.imagen,
+              });
           }
-        },
+      },
         error: (error) => {
           console.error('Error al cargar los datos del plato', error);
         }
@@ -58,15 +52,25 @@ export class UpdatePlatoComponent implements OnInit {
     }
   }
 
+  ngOnInit(): void {
+    this.cargarPlato();
+  }
+
+  imagenBase64: string | null = null;
+  
+  
   actualizarPlato(): void {
-    if (this.platoForm.valid && this.plato) {
+    if (this.platoForm.valid) {
       const platoId = this.route.snapshot.paramMap.get('id');
       if (platoId) {
-        const updatedPlato = this.platoForm.value;
-
+        const updatedPlato = {
+          ...this.platoForm.value,
+          imagen: this.imagenBase64,
+        };
+  
         this.platoService.updatePlato(platoId, updatedPlato).subscribe({
           next: (response: any) => {
-            console.log('Plato actualizado exitosamente');
+            console.log('Plato actualizado exitosamente', response);
             this.router.navigate(['/platos']);
           },
           error: (error) => {
@@ -74,6 +78,28 @@ export class UpdatePlatoComponent implements OnInit {
           }
         });
       }
+    } else {
+      console.log('Formulario inválido');
     }
   }
+  
+  
+
+
+  onFileSelected(event: Event): void {
+    const fileInput = event.target as HTMLInputElement;
+  
+    if (fileInput.files && fileInput.files.length > 0) {
+      const file = fileInput.files[0];
+      const reader = new FileReader();
+  
+      reader.onload = () => {
+        this.imagenBase64 = reader.result as string; // Convertir a Base64
+        console.log('Imagen en Base64:', this.imagenBase64);
+      };
+  
+      reader.readAsDataURL(file); // Leer el archivo como Base64
+    }
+  }
+
 }

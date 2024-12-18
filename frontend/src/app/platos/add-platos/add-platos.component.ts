@@ -12,41 +12,61 @@ import { FooterComponent } from '../../pages/footer/footer.component';
   standalone: true,
   imports: [NgIf, ReactiveFormsModule, NavbarComponent, FooterComponent],
   templateUrl: './add-platos.component.html',
-  styleUrls: ['./add-platos.component.css']
+  styleUrl: './add-platos.component.css',
 })
 export class AddPlatosComponent {
   addPlatoForm: FormGroup;
+  imagePreview: string | null = null; // Vista previa de la imagen
   errorMessage: string = '';
 
-  constructor(private fb: FormBuilder, private router: Router, private platoService: PlatoService) {
+  constructor(private fb: FormBuilder, private router: Router, private dataAdd: PlatoService) {
     this.addPlatoForm = this.fb.group({
       nombre: ['', Validators.required],
       ingredientes: ['', Validators.required],
-      precio: ['', [Validators.required, Validators.min(0)]],
-      categoria: ['', Validators.required],
+      precio: ['', Validators.required],
+      imagen: [''], // Este campo contendrá la cadena Base64
     });
   }
 
-  addPlato() {
+  onFileSelect(event: Event): void {
+    const fileInput = event.target as HTMLInputElement;
+    if (fileInput.files && fileInput.files.length > 0) {
+      const file = fileInput.files[0];
+
+      // Generar vista previa y codificar la imagen en Base64
+      const reader = new FileReader();
+      reader.onload = () => {
+        this.imagePreview = reader.result as string; // Vista previa
+        this.addPlatoForm.patchValue({ imagen: this.imagePreview }); // Asignar Base64 al formulario
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+
+  addPlato(): void {
     if (this.addPlatoForm.invalid) {
       this.errorMessage = 'Todos los campos son obligatorios.';
       return;
     }
-
+  
     const plato: Plato = {
       nombre: this.addPlatoForm.get('nombre')?.value,
       ingredientes: this.addPlatoForm.get('ingredientes')?.value,
       precio: this.addPlatoForm.get('precio')?.value,
-      categoria: this.addPlatoForm.get('categoria')?.value,
+      imagen: this.imagePreview ? [this.imagePreview] : [],
     };
-
-    this.platoService.addPlato(plato).subscribe({
-      next: () => {
+  
+    this.dataAdd.addPlato(plato).subscribe({
+      next: (response) => {
+        console.log('Plato añadido:', response);  // Asegúrate de que la respuesta sea JSON
         this.router.navigate(['/platos']);
       },
       error: (error: any) => {
-        this.errorMessage = error.error.message || 'Error al añadir el plato. Intente de nuevo.';
+        this.errorMessage = error.error.message || 'Error al añadir. Intente de nuevo.';
+        console.error('Error al añadir plato:', error);  // Verifica la respuesta de error
       },
     });
   }
+  
+  
 }

@@ -9,25 +9,31 @@ import { Plato } from '../models/plato'
 export class PlatoService {
   private apiUrlGet = 'http://localhost:3000/api/platos'
   private apiUrl = 'http://localhost:3000/api/plato'
+  private api = 'http://localhost:3000/api'
+  private apiUrlAdd = 'http://localhost:3000/api/addPlato'
 
   constructor(private http: HttpClient) {}
 
 
   getPlatos(): Observable<Plato[]> {
-    return this.http.get<Plato[]>(this.apiUrlGet)
+    return this.http.get<Plato[]>(this.apiUrlGet);
   }
 
-
-  addPlato(plato: Plato): Observable<Plato> {
-    return this.http.post<Plato>(this.apiUrl, plato)
+  addPlato(plato: Plato):  Observable<any> {
+    return this.http.post<Plato>(this.apiUrlAdd, plato);
   }
 
+  updatePlato(id: string, plato: any): Observable<Plato> {
+    return this.http.put<Plato>(`${this.api}/updatePlato/${id}`, plato);
+  }
 
-  updatePlato(id: string, plato: Plato): Observable<Plato> {
-    return this.http.put<Plato>(`${this.apiUrl}/${id}`, plato)
+  
+  getPlato(id: string): Observable<Plato> {
+    return this.http.get<Plato>(`${this.apiUrl}/${id}`);
   }
 
   deletePlato(id: string): Observable<any> {
-    return this.http.delete<void>(`${this.apiUrl}/${id}`)
+    return this.http.delete(`${this.api}/deletePlato/${id}`);
   }
+  
 }

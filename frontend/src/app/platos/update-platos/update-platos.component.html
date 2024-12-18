@@ -2,7 +2,7 @@
 <div id="content">
     <section class="container mt-5">
         <div class="d-flex flex-column align-items-center">
-            <h1 class="fw-bold text-dark mb-4">Actualizar Plato</h1>
+            <h1 class="fw-bold text-dark mb-4">Actualizar Platos</h1>
             <div class="col-12 col-md-10">
                 <div class="card-body text-light">
                     <form [formGroup]="platoForm" (ngSubmit)="actualizarPlato()">
@@ -13,16 +13,28 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="descripcion" class="form-label">Descripción</label>
-                            <input type="text" id="descripcion" formControlName="descripcion" placeholder="Descripción del plato"
-                                title="Por favor ingrese una descripción" class="form-control" required />
+                            <label for="ingredientes" class="form-label">ingredientes</label>
+                            <input type="text" id="ingredientes" formControlName="ingredientes" placeholder="Ingredientes"
+                                title="Por favor ingrese el ingredientes del plato" class="form-control" required />
                         </div>
 
                         <div class="mb-3">
                             <label for="precio" class="form-label">Precio</label>
-                            <input type="number" id="precio" formControlName="precio" placeholder="Precio"
-                                title="Por favor ingrese el precio" class="form-control" required />
+                            <input type="number" id="precio" formControlName="precio" placeholder="Precio ej: 21.99"
+                                title="Por favor ingrese su precio" class="form-control" required />
                         </div>
+
+                        <div class="mb-3">
+                            <label for="imagen" class="form-label">Imagen</label>
+                            <input 
+                              type="file" 
+                              id="imagen" 
+                              class="form-control" 
+                              (change)="onFileSelected($event)"
+                            />
+                          </div>
+                          
+                        
 
                         <div class="d-flex justify-content-start">
                             <button class="btn btn-warning" type="submit"

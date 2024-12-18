@@ -1,16 +1,17 @@
 export class Plato {
-    _id?: string = ''; 
-    nombre: string;
-    ingredientes: string;
-    precio: string;
-    categoria: string; 
+  _id?: string = '';
+  nombre: string;
+  ingredientes: string;
+  precio: number;
+  imagen: string[];
 
-    constructor(nombre: string, ingredientes: string, precio: string, categoria: string){
-      this.nombre = nombre
-      this.ingredientes = ingredientes
-      this.precio = precio
-      this.categoria = categoria
-    }
+
+  constructor(nombre: string, ingredientes: string, precio: number, imagen: string) {
+      this.nombre = nombre;
+      this.ingredientes = ingredientes;
+      this.precio = precio;
+      this.imagen = [imagen];
   }
+}
 
   
