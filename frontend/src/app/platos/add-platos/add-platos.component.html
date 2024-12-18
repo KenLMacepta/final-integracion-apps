@@ -1,0 +1,64 @@
+<app-navbar></app-navbar>
+<div id="content">
+    <section class="container mt-5">
+        <div class="d-flex flex-column align-items-center">
+            <h1 class="fw-bold text-light mb-4">Agregar Platos</h1>
+            <div class="col-12 col-md-10">
+                <div class="card-body text-light">
+                    <form [formGroup]="addPlatoForm" (ngSubmit)="addPlato()">
+                        <div class="mb-3">
+                            <label for="nombre" class="form-label">Nombre</label>
+                            <input type="text" id="nombre" formControlName="nombre" placeholder="Nombre"
+                                title="Por favor ingrese el nombre del plato" class="form-control" />
+                            <div *ngIf="addPlatoForm.get('nombre')?.hasError('required') && addPlatoForm.get('nombre')?.touched"
+                                class="text-danger mt-1">
+                                <span>El nombre <strong>es obligatorio</strong></span>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="descripcion" class="form-label">Descripción</label>
+                            <textarea id="descripcion" formControlName="descripcion" placeholder="Descripción del plato"
+                                title="Por favor ingrese una descripción" class="form-control"></textarea>
+                            <div *ngIf="addPlatoForm.get('descripcion')?.hasError('required') && addPlatoForm.get('descripcion')?.touched"
+                                class="text-danger mt-1">
+                                <span>La descripción <strong>es obligatoria</strong></span>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="precio" class="form-label">Precio</label>
+                            <input type="number" id="precio" formControlName="precio" placeholder="Precio"
+                                title="Por favor ingrese el precio del plato" class="form-control" />
+                            <div *ngIf="addPlatoForm.get('precio')?.hasError('required') && addPlatoForm.get('precio')?.touched"
+                                class="text-danger mt-1">
+                                <span>El precio <strong>es obligatorio</strong></span>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="categoria" class="form-label">Categoría</label>
+                            <input type="text" id="categoria" formControlName="categoria" placeholder="Categoría"
+                                title="Por favor ingrese la categoría" class="form-control" />
+                            <div *ngIf="addPlatoForm.get('categoria')?.hasError('required') && addPlatoForm.get('categoria')?.touched"
+                                class="text-danger mt-1">
+                                <span>La categoría <strong>es obligatoria</strong></span>
+                            </div>
+                        </div>
+
+                        <div *ngIf="errorMessage" class="alert alert-danger">
+                            {{ errorMessage }}
+                        </div>
+
+                        <div class="d-flex justify-content-start">
+                            <button class="btn btn-warning" type="submit"
+                                [disabled]="addPlatoForm.invalid">Añadir</button>
+                            <a class="btn btn-secondary ms-3" href="/platos">Cancelar</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<app-footer />

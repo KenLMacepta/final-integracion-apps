@@ -1,0 +1,44 @@
+<app-navbar></app-navbar>
+<div id="content">
+    <section class="container mt-5">
+        <div class="d-flex flex-column align-items-center">
+            <h1 class="fw-bold text-dark mb-4" style="font-size: 2.5rem;">Listar Platos</h1>
+            <div class="col-12">
+                <div class="table-container">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nombre</th>
+                                <th>Ingredientes</th>
+                                <th>Precio</th>
+                                <th>Categoría</th>
+                                <th class="text-center">Actualizar</th>
+                                <th class="text-center">Eliminar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let plato of platos; let i = index">
+                                <td>{{ i + 1 }}</td>
+                                <td class="text-uppercase">{{ plato.nombre }}</td>
+                                <td>{{ plato.ingredientes }}</td>
+                                <td>{{ plato.precio }}</td>
+                                <td>{{ plato.categoria }}</td>
+                                <td class="text-center">
+                                    <button [routerLink]="['/platos/update', plato._id]"
+                                        class="btn btn-primary">Actualizar</button>
+                                </td>
+                                <td class="text-center">
+                                    <button (click)="deletePlato(plato._id)" class="btn btn-danger">Eliminar</button>
+
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <a class="btn btn-lg btn-warning mt-4" routerLink="/platos/add">Añadir</a>
+            </div>
+        </div>
+    </section>
+</div>
+<app-footer />

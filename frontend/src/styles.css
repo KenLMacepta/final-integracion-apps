@@ -1,0 +1,172 @@
+/* Global styles */
+:root {
+    --primary-dark: #2A3D4F; /* Azul oscuro */
+    --primary-light: #89A8C8; /* Azul claro */
+    --accent: #FF6F61; /* Coral */
+    --text-dark: #2F4F4F; /* Gris oscuro */
+    --text-light: #1E293B; /* Gris más oscuro para texto claro */
+    --bg-light: #F9FAFB; /* Fondo claro */
+    --bg-dark-100: #E5E7EB; /* Gris muy claro */
+    --bg-dark-200: #D1D5DB; /* Gris más claro */
+    --gray-light: #D3D8DC; /* Gris claro */
+}
+
+/* Global styles */
+body{
+    background-color: var(--bg-light);
+    color: var(--text-dark); /* Cambié el texto oscuro para que sea legible */
+}
+
+h2{
+    color: var(--accent); /* Mantengo el color coral */
+}
+
+h3{
+    padding-bottom: 20px;
+    color: var(--accent);
+    border-bottom: 2px solid var(--accent);
+}
+
+h4{
+    color: var(--text-dark); /* Usamos un gris oscuro para h4 */
+}
+
+p{
+    color: var(--text-dark); /* Texto en gris oscuro para mejorar la legibilidad */
+}
+
+/* Navbar Styles */
+.navbar {
+    background-color: var(--primary-light); /* Azul claro para el navbar */
+    height: 120px;
+    padding: 0 1.5rem;
+}
+
+.navbar .nav-link {
+    color: var(--text-dark); /* Texto en gris oscuro */
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin: 0 0.5rem;
+    transition: color 0.3s ease;
+}
+
+.navbar .nav-link:hover {
+    color: var(--accent); /* Coral al pasar el ratón */
+}
+
+.navbar .nav-link.active {
+    color: var(--primary-dark); /* Azul oscuro para los links activos */
+    border-bottom: 2px solid var(--accent);
+}
+
+.navbar-toggler {
+    border-color: var(--text-dark); /* Toggler con borde oscuro */
+}
+
+.navbar-toggler-icon {
+    background-color: var(--text-dark); /* Icono del toggler oscuro */
+    width: 25px;
+    height: 3px;
+    display: block;
+    margin: 5px 0;
+}
+
+/* card Styles */
+.card{
+    background-color: var(--bg-light); /* Fondo claro para las tarjetas */
+    color: var(--text-dark); /* Texto oscuro */
+}
+
+/* Hero Section */
+.hero {
+    background: url('../public/banner.jpg') no-repeat center center/cover;
+    color: var(--text-light); /* Texto claro sobre la imagen */
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    font-size: 1.25rem;
+}
+
+/* Info List */
+.info ul {
+    list-style: none;
+    padding: 0;
+    color: var(--text-dark); /* Texto oscuro para la lista */
+}
+
+.info ul li::before {
+    content: "🍴";
+    margin-right: 10px;
+}
+
+#content{
+    min-height: 100vh;
+}
+
+/* Footer */
+footer {
+    background: var(--bg-dark-100);
+    color: var(--text-dark); /* Texto oscuro para el footer */
+    padding: 20px 0;
+    text-align: center;
+}
+
+.footer-links a {
+    color: var(--accent); /* Coral para los links */
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: var(--primary-dark); /* Azul oscuro al pasar el ratón */
+}
+
+/* Table Section */
+.table-container {
+    overflow-x: auto;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: var(--bg-dark-100); /* Fondo claro para las tablas */
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th {
+    font-weight: 600;
+    text-align: left;
+    padding: 0.75rem;
+    background-color: var(--primary-light); /* Fondo claro para encabezados */
+    color: var(--text-dark); /* Texto oscuro en los encabezados */
+}
+
+.table td {
+    padding: 0.75rem;
+    border-top: 1px solid var(--gray-light);
+    color: var(--text-dark); /* Texto oscuro en las celdas */
+}
+
+.table tbody tr:hover {
+    background-color: var(--gray-light); /* Color de fondo claro al pasar el ratón */
+}
+
+.status-dot.active {
+    color: green;
+}
+
+.status-dot.inactive {
+    color: #E11D48; /* Rojo para el estado inactivo */
+}

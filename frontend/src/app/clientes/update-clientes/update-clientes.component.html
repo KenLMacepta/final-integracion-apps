@@ -1,0 +1,49 @@
+<app-navbar></app-navbar>
+
+<div id="content">
+    <section class="container mt-5">
+        <div class="d-flex flex-column align-items-center">
+            <h1 class="fw-bold text-dark mb-4" style="font-size: 2.5rem;">Actualizar Clientes</h1>
+            <div class="col-12 col-md-8 col-lg-6">
+                <div class="card shadow-sm" style="border-radius: 0.5rem;">
+                    <div class="card-body">
+                        <form [formGroup]="clienteForm" (ngSubmit)="actualizarCliente()">
+                            <div class="mb-3">
+                                <label for="nombre" class="form-label">Nombre</label>
+                                <input type="text" id="nombre" formControlName="nombre" placeholder="Nombre"
+                                    class="form-control" required />
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="correo" class="form-label">Correo</label>
+                                <input type="email" id="correo" formControlName="correo" placeholder="Correo electrónico"
+                                    class="form-control" required />
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="dni" class="form-label">DNI</label>
+                                <input type="number" id="dni" formControlName="dni" placeholder="8 dígitos"
+                                    class="form-control" required />
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="telefono" class="form-label">Teléfono</label>
+                                <input type="number" id="telefono" formControlName="telefono" placeholder="9 dígitos"
+                                    class="form-control" required />
+                            </div>
+
+                            <div class="d-flex justify-content-between">
+                                <button class="btn btn-success" type="submit" [disabled]="clienteForm.invalid">
+                                    Actualizar
+                                </button>
+                                <a class="btn btn-secondary ms-3" href="/clientes">Cancelar</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<app-footer />

@@ -1,0 +1,27 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid justify-content-end">
+    <!-- Toggler Button -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <!-- Navbar Links -->
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav ms-auto">
+        <a class="nav-link text-dark fw-semibold px-3" [class.active]="isActive('/home')" href="/home">Principal</a>
+        <a class="nav-link text-dark fw-semibold px-3" [class.active]="isActive('/clientes') || isActive('/addCliente') || isActive('/updateCliente')" href="/clientes">Clientes</a>
+        <a class="nav-link text-dark fw-semibold px-3" [class.active]="isActive('/meseros') || isActive('/addMesero') || isActive('/updateMesero')" href="/meseros">Meseros</a>
+        <a class="nav-link text-dark fw-semibold px-3" [class.active]="isActive('/categorias') || isActive('/addCategoria') || isActive('/updateCategoria')" href="/categorias">Categorías</a>
+        <a class="nav-link text-dark fw-semibold px-3" [class.active]="isActive('/platos') || isActive('/addPlatos') || isActive('/updatePlatos')" href="/platos">Platos</a>
+      </div>
+      
+      <!-- Logout Button -->
+      <div class="d-flex align-items-center ms-3">
+        <button class="btn btn-outline-danger" (click)="logout()">Cerrar sesión</button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<router-outlet></router-outlet>

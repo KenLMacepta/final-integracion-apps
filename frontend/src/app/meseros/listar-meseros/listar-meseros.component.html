@@ -1,0 +1,54 @@
+<app-navbar></app-navbar>
+
+<div id="content">
+    <section class="container mt-5">
+        <div class="d-flex flex-column align-items-center">
+            <h1 class="fw-bold text-dark mb-4">Listar Meseros</h1>
+            <div class="col-12">
+                <div class="table-container">
+                    <table class="table table-hover table-striped">
+                        <thead class="bg-dark text-white">
+                            <tr>
+                                <th>ID</th>
+                                <th>Nombre</th>
+                                <th>Correo</th>
+                                <th>Teléfono</th>
+                                <th class="text-center">Activo</th>
+                                <th class="text-center">Actualizar</th>
+                                <th class="text-center">Eliminar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let mesero of meseros; let i = index" class="align-middle">
+                                <td>{{ i + 1 }}</td>
+                                <td class="text-uppercase">{{ mesero.nombre }}</td>
+                                <td>{{ mesero.correo }}</td>
+                                <td>{{ mesero.telefono }}</td>
+                                <td class="text-center">
+                                    <div class="status-dot" [ngClass]="mesero.activo ? 'active' : 'inactive'">
+                                        <i class="bi" [ngClass]="mesero.activo ? 'bi-check-square-fill' : 'bi-x-square-fill'"></i>
+                                    </div>
+                                </td>
+                                <td class="text-center">
+                                    <button [routerLink]="['/updateMesero', mesero._id]" class="btn btn-primary btn-sm">
+                                        <i class="bi bi-pencil"></i> Actualizar
+                                    </button>
+                                </td>
+                                <td class="text-center">
+                                    <button (click)="eliminarMesero(mesero._id)" class="btn btn-danger btn-sm">
+                                        <i class="bi bi-trash"></i> Eliminar
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <a class="btn btn-lg btn-warning mt-4" routerLink="/addMesero">
+                    <i class="bi bi-person-plus-fill"></i> Añadir Mesero
+                </a>
+            </div>
+        </div>
+    </section>
+</div>
+
+<app-footer />

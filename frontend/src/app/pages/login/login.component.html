@@ -1,0 +1,52 @@
+<!-- Main content -->
+<section class="login-container">
+    <div class="container my-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-5"> <!-- Ajustado el tamaño del contenedor -->
+                <div class="card shadow-lg border-0" style="border-radius: 1rem;">
+                    <div class="card-header text-center text-white" style="border-top-left-radius: 1rem; border-top-right-radius: 1rem;">
+                        <i class="pe page-header-icon pe-7s-unlock" style="font-size: 2rem;"></i>
+                        <h3 class="mt-2 text-dark">Bienvenido a Tagliatore</h3>
+                    </div>
+                    <div class="card-body">
+                        <form [formGroup]="loginForm" (ngSubmit)="loginUser()">
+                            <!-- Campo de correo -->
+                            <div class="mb-4">
+                                <label for="correo" class="form-label" style="font-size: 1.2rem;">Correo</label>
+                                <input type="email" id="correo" formControlName="correo" placeholder="Correo electrónico"
+                                    title="Por favor ingrese su correo" class="form-control form-control-lg" />
+                                <div *ngIf="loginForm.get('correo')?.hasError('required') && loginForm.get('correo')?.touched"
+                                    class="text-danger mt-1" style="font-size: 0.9rem;">
+                                    Ingrese un correo electrónico
+                                </div>
+                            </div>
+
+                            <!-- Campo de contraseña -->
+                            <div class="mb-4">
+                                <label for="contraseña" class="form-label" style="font-size: 1.2rem;">Contraseña</label>
+                                <input type="password" id="contraseña" formControlName="contraseña" placeholder="Contraseña"
+                                    title="Por favor ingrese su contraseña" class="form-control form-control-lg" />
+                                <div *ngIf="loginForm.get('contraseña')?.hasError('required') && loginForm.get('contraseña')?.touched"
+                                    class="text-danger mt-1" style="font-size: 0.9rem;">
+                                    Ingrese una contraseña
+                                </div>
+                            </div>
+
+                            <!-- Mensaje de error -->
+                            <div *ngIf="errorMessage" class="alert alert-danger text-center" style="font-size: 0.95rem;">
+                                {{ errorMessage }}
+                            </div>
+
+                            <!-- Botón de login -->
+                            <div class="d-flex justify-content-between align-items-center">
+                                <button class="btn btn-warning btn-lg" type="submit"
+                                    [disabled]="loginForm.invalid" style="padding: 0.8rem 2rem;">Login
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
