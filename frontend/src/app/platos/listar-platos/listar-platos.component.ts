@@ -15,12 +15,12 @@ import { FooterComponent } from '../../pages/footer/footer.component';
   styleUrl: './listar-platos.component.css'
 })
 export class ListarPlatosComponent implements OnInit {
-  platos: Plato[] = [];  // Array para almacenar los platos
+  platos: Plato[] = []; 
 
   constructor(private platoService: PlatoService, private router: Router) { }
 
   ngOnInit(): void {
-    this.cargarPlatos();  // Cargar la lista de meseros al iniciar el componente
+    this.cargarPlatos(); 
   }
 
   cargarPlatos() {
@@ -38,7 +38,7 @@ export class ListarPlatosComponent implements OnInit {
 
   eliminarPlato(id: string | undefined): void {
     if (id) {
-      if (confirm('¿Estás seguro de que deseas eliminar este plato?')) {
+      if (confirm('¿Estás seguro de eliminar este plato?')) {
         this.platoService.deletePlato(id).subscribe({
           next: (response: any) => {
             this.platos = this.platos.filter(p => p._id !== id);

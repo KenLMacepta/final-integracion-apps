@@ -1,62 +1,50 @@
 <app-navbar></app-navbar>
 <div id="content">
-    <section class="container mt-5">
+    <section class="container mt-4">
         <div class="d-flex flex-column align-items-center">
-            <h1 class="fw-bold text-dark mb-4">Agregar Platos</h1>
-            <div class="col-12 col-md-10">
-                <div class="card-body text-light">
+            <h1 class="fw-bold text-dark mb-4 display-4">Agregar Platos</h1>
+            <div class="col-12 col-md-8">
+                <div class="card-body text-light p-4" style="background-color: #f8f9fa; border-radius: 10px;">
                     <form [formGroup]="addPlatoForm" (ngSubmit)="addPlato()">
                         <div class="mb-3">
-                            <label for="nombre" class="form-label">Nombre</label>
-                            <input type="text" id="nombre" formControlName="nombre" placeholder="Name Example"
-                                title="Por favor ingrese el nombre del plato" class="form-control" />
+                            <label for="nombre" class="form-label text-dark fs-5">Nombre</label>
+                            <input type="text" id="nombre" formControlName="nombre" placeholder="Nombre"
+                                title="Por favor ingrese el nombre del plato" class="form-control form-control-lg" />
                             <div *ngIf="addPlatoForm.get('nombre')?.hasError('required') && addPlatoForm.get('nombre')?.touched"
                                 class="text-danger mt-1">
                                 <span>El nombre <strong>es obligatorio</strong></span>
                             </div>
-                            <div *ngIf="!addPlatoForm.get('nombre')?.hasError('required') && addPlatoForm.get('nombre')?.touched"
-                                class="mt-1">
-                                <span class="text-muted"></span>
-                            </div>
                         </div>
 
                         <div class="mb-3">
-                            <label for="ingredientes" class="form-label">Ingredientes</label>
-                            <input type="text" id="ingredientes" formControlName="ingredientes" placeholder="Name Example"
-                                title="Por favor ingrese los ingredientes del plato" class="form-control" />
+                            <label for="ingredientes" class="form-label text-dark fs-5">Ingredientes</label>
+                            <input type="text" id="ingredientes" formControlName="ingredientes" placeholder="Ejemplo: Tomate, Queso"
+                                title="Por favor ingrese los ingredientes del plato" class="form-control form-control-lg" />
                             <div *ngIf="addPlatoForm.get('ingredientes')?.hasError('required') && addPlatoForm.get('ingredientes')?.touched"
                                 class="text-danger mt-1">
-                                <span>Los ingredientes <strong>son obligatorios</strong></span>
-                            </div>
-                            <div *ngIf="!addPlatoForm.get('ingredientes')?.hasError('required') && addPlatoForm.get('ingredientes')?.touched"
-                                class="mt-1">
-                                <span class="text-muted"></span>
+                                <span>Falta llenar este campo</span>
                             </div>
                         </div>
 
                         <div class="mb-3">
-                            <label for="precio" class="form-label">Precio</label>
-                            <input type="number" id="precio" formControlName="precio" placeholder="99999999"
-                                title="Por favor ingrese el precio" class="form-control" />
+                            <label for="precio" class="form-label text-dark fs-5">Precio</label>
+                            <input type="number" id="precio" formControlName="precio" placeholder="Precio ej: 21.99"
+                                title="Por favor ingrese el precio" class="form-control form-control-lg" />
                             <div *ngIf="addPlatoForm.get('precio')?.hasError('required') && addPlatoForm.get('precio')?.touched"
                                 class="text-danger mt-1">
-                                <span>El Precio <strong>es obligatorio</strong></span>
-                            </div>
-                            <div *ngIf="!addPlatoForm.get('precio')?.hasError('required') && addPlatoForm.get('precio')?.touched"
-                                class="mt-1">
-                                <span class="text-muted"></span>
+                                <span>Falta llenar este campo</span>
                             </div>
                         </div>
 
                         <div class="mb-3">
-                            <label for="imagen" class="form-label">Imagen</label>
+                            <label for="imagen" class="form-label text-dark fs-5">Imagen</label>
                             <input type="file" id="imagen" (change)="onFileSelect($event)" class="form-control" />
                             <div *ngIf="imagePreview">
-                                <p class="mt-2">Vista previa de la imagen:</p>
-                                <img [src]="imagePreview" alt="Vista previa" class="img-thumbnail mt-2" style="max-width: 200px;" />
+                                <p class="mt-2 text-dark">Vista previa de la imagen:</p>
+                                <img [src]="imagePreview" alt="Vista previa" class="img-thumbnail mt-2" style="max-width: 300px;" />
                             </div>
                             <div *ngIf="!imagePreview && addPlatoForm.get('imagen')?.touched" class="text-danger mt-1">
-                                <span>Por favor, seleccione una imagen.</span>
+                                
                             </div>
                         </div>
 
@@ -64,8 +52,8 @@
                             {{ errorMessage }}
                         </div>
 
-                        <div class="d-flex justify-content-start">
-                            <button class="btn btn-warning" type="submit"
+                        <div class="d-flex justify-content-center">
+                            <button class="btn btn-success btn-lg px-5" type="submit"
                                 [disabled]="addPlatoForm.invalid">Añadir</button>
                         </div>
                     </form>

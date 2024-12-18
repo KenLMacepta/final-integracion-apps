@@ -2,31 +2,31 @@
 <div id="content">
     <section class="container mt-5">
         <div class="d-flex flex-column align-items-center">
-            <h1 class="fw-bold text-light mb-4">Agregar Meseros</h1>
+            <h1 class="fw-bold text-dark mb-4">Agregar Meseros</h1>
             <div class="col-12 col-md-10">
                 <div class="card-body text-light">
                     <form [formGroup]="addMeseroForm" (ngSubmit)="addMesero()">
                         <div class="mb-3">
-                            <label for="nombre" class="form-label">Nombre</label>
+                            <label for="nombre" class="form-label text-dark">Nombre</label>
                             <input type="text" id="nombre" formControlName="nombre" placeholder="Nombre"
                                 title="Por favor ingrese su nombre" class="form-control" />
                             <div *ngIf="addMeseroForm.get('nombre')?.hasError('required') && addMeseroForm.get('nombre')?.touched"
                                 class="text-danger mt-1">
-                                <span>El nombre <strong>es obligatorio</strong></span>
+                                <span>Falta llenar este campo</span>
                             </div>
                             <div *ngIf="!addMeseroForm.get('nombre')?.hasError('required') && addMeseroForm.get('nombre')?.touched"
                                 class="mt-1">
-                                <span class="text-muted"></span>
+                                
                             </div>
                         </div>
 
                         <div class="mb-3">
-                            <label for="correo" class="form-label">Correo</label>
+                            <label for="correo" class="form-label text-dark">Correo</label>
                             <input type="email" id="correo" formControlName="correo" placeholder="Correo electrónico"
                                 title="Por favor ingrese su correo" class="form-control" />
                             <div *ngIf="addMeseroForm.get('correo')?.hasError('required') && addMeseroForm.get('correo')?.touched"
                                 class="text-danger mt-1">
-                                <span>El correo <strong>es obligatorio</strong></span>
+                                <span>Falta llenar este campo</span>
                             </div>
                             <div *ngIf="!addMeseroForm.get('correo')?.hasError('required') && addMeseroForm.get('correo')?.touched"
                                 class="mt-1">
@@ -35,12 +35,12 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="contraseña" class="form-label">Contraseña</label>
+                            <label for="contraseña" class="form-label text-dark">Contraseña</label>
                             <input type="password" id="contraseña" formControlName="contraseña" placeholder="Contraseña"
                                 title="Por favor ingrese su contrasela" class="form-control" />
                             <div *ngIf="addMeseroForm.get('contraseña')?.hasError('required') && addMeseroForm.get('contraseña')?.touched"
                                 class="text-danger mt-1">
-                                <span>La contraseña <strong>es obligatorio</strong></span>
+                                <span>Falta llenar este campo</span>
                             </div>
                             <div *ngIf="!addMeseroForm.get('contraseña')?.hasError('required') && addMeseroForm.get('contraseña')?.touched"
                                 class="mt-1">
@@ -49,12 +49,12 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="telefono" class="form-label">Telefono</label>
+                            <label for="telefono" class="form-label text-dark">Telefono</label>
                             <input type="number" id="telefono" formControlName="telefono" placeholder="Número telefónico"
                                 title="Por favor ingrese su telefono" class="form-control" />
                             <div *ngIf="addMeseroForm.get('telefono')?.hasError('required') && addMeseroForm.get('telefono')?.touched"
                                 class="text-danger mt-1">
-                                <span>El telefono <strong>es obligatorio</strong></span>
+                                <span>Falta llenar este campo</span>
                             </div>
                             <div *ngIf="!addMeseroForm.get('telefono')?.hasError('required') && addMeseroForm.get('telefono')?.touched"
                                 class="mt-1">

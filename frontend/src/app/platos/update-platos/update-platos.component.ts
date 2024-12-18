@@ -83,9 +83,6 @@ export class UpdatePlatoComponent implements OnInit {
     }
   }
   
-  
-
-
   onFileSelected(event: Event): void {
     const fileInput = event.target as HTMLInputElement;
   
@@ -94,11 +91,11 @@ export class UpdatePlatoComponent implements OnInit {
       const reader = new FileReader();
   
       reader.onload = () => {
-        this.imagenBase64 = reader.result as string; // Convertir a Base64
-        console.log('Imagen en Base64:', this.imagenBase64);
+        this.imagenBase64 = reader.result as string; 
+        //console.log('Imagen en Base64:', this.imagenBase64);
       };
   
-      reader.readAsDataURL(file); // Leer el archivo como Base64
+      reader.readAsDataURL(file); 
     }
   }
 

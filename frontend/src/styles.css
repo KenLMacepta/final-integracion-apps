@@ -1,49 +1,46 @@
-/* Global styles */
 :root {
-    --primary-dark: #2A3D4F; /* Azul oscuro */
-    --primary-light: #89A8C8; /* Azul claro */
-    --accent: #FF6F61; /* Coral */
-    --text-dark: #2F4F4F; /* Gris oscuro */
-    --text-light: #1E293B; /* Gris más oscuro para texto claro */
-    --bg-light: #F9FAFB; /* Fondo claro */
-    --bg-dark-100: #E5E7EB; /* Gris muy claro */
-    --bg-dark-200: #D1D5DB; /* Gris más claro */
-    --gray-light: #D3D8DC; /* Gris claro */
+    --primary-dark: #2A3D4F;
+    --primary-light: #89A8C8;
+    --accent: #ffdf86;
+    --text-dark: #2F4F4F;
+    --text-light: #1E293B;
+    --bg-light: #F9FAFB;
+    --bg-dark-100: #E5E7EB;
+    --bg-dark-200: #D1D5DB;
+    --gray-light: #D3D8DC;
 }
 
-/* Global styles */
-body{
+body {
     background-color: var(--bg-light);
-    color: var(--text-dark); /* Cambié el texto oscuro para que sea legible */
+    color: var(--text-dark);
 }
 
-h2{
-    color: var(--accent); /* Mantengo el color coral */
+h2 {
+    color: var(--accent);
 }
 
-h3{
+h3 {
     padding-bottom: 20px;
     color: var(--accent);
     border-bottom: 2px solid var(--accent);
 }
 
-h4{
-    color: var(--text-dark); /* Usamos un gris oscuro para h4 */
+h4 {
+    color: var(--text-dark);
 }
 
-p{
-    color: var(--text-dark); /* Texto en gris oscuro para mejorar la legibilidad */
+p {
+    color: var(--text-dark);
 }
 
-/* Navbar Styles */
 .navbar {
-    background-color: var(--primary-light); /* Azul claro para el navbar */
+    background-color: var(--primary-light);
     height: 120px;
     padding: 0 1.5rem;
 }
 
 .navbar .nav-link {
-    color: var(--text-dark); /* Texto en gris oscuro */
+    color: var(--text-dark);
     font-size: 1.1rem;
     font-weight: bold;
     margin: 0 0.5rem;
@@ -51,36 +48,29 @@ p{
 }
 
 .navbar .nav-link:hover {
-    color: var(--accent); /* Coral al pasar el ratón */
+    color: var(--accent);
 }
 
 .navbar .nav-link.active {
-    color: var(--primary-dark); /* Azul oscuro para los links activos */
+    color: var(--primary-dark);
     border-bottom: 2px solid var(--accent);
 }
 
 .navbar-toggler {
-    border-color: var(--text-dark); /* Toggler con borde oscuro */
+    border-color: var(--text-dark);
 }
 
 .navbar-toggler-icon {
-    background-color: var(--text-dark); /* Icono del toggler oscuro */
+    background-color: var(--text-dark);
     width: 25px;
     height: 3px;
     display: block;
     margin: 5px 0;
 }
 
-/* card Styles */
-.card{
-    background-color: var(--bg-light); /* Fondo claro para las tarjetas */
-    color: var(--text-dark); /* Texto oscuro */
-}
-
-/* Hero Section */
 .hero {
     background: url('../public/banner.jpg') no-repeat center center/cover;
-    color: var(--text-light); /* Texto claro sobre la imagen */
+    color: var(--text-light);
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
     height: 400px;
     display: flex;
@@ -98,46 +88,16 @@ p{
     font-size: 1.25rem;
 }
 
-/* Info List */
-.info ul {
-    list-style: none;
-    padding: 0;
-    color: var(--text-dark); /* Texto oscuro para la lista */
+.card {
+    background-color: var(--bg-light);
+    color: var(--text-dark);
 }
 
-.info ul li::before {
-    content: "🍴";
-    margin-right: 10px;
-}
-
-#content{
-    min-height: 100vh;
-}
-
-/* Footer */
-footer {
-    background: var(--bg-dark-100);
-    color: var(--text-dark); /* Texto oscuro para el footer */
-    padding: 20px 0;
-    text-align: center;
-}
-
-.footer-links a {
-    color: var(--accent); /* Coral para los links */
-    text-decoration: none;
-    transition: color 0.3s;
-}
-
-.footer-links a:hover {
-    color: var(--primary-dark); /* Azul oscuro al pasar el ratón */
-}
-
-/* Table Section */
 .table-container {
     overflow-x: auto;
     border-radius: 0.5rem;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    background-color: var(--bg-dark-100); /* Fondo claro para las tablas */
+    background-color: var(--bg-dark-100);
 }
 
 .table {
@@ -149,18 +109,18 @@ footer {
     font-weight: 600;
     text-align: left;
     padding: 0.75rem;
-    background-color: var(--primary-light); /* Fondo claro para encabezados */
-    color: var(--text-dark); /* Texto oscuro en los encabezados */
+    background-color: var(--primary-light);
+    color: var(--text-dark);
 }
 
 .table td {
     padding: 0.75rem;
     border-top: 1px solid var(--gray-light);
-    color: var(--text-dark); /* Texto oscuro en las celdas */
+    color: var(--text-dark);
 }
 
 .table tbody tr:hover {
-    background-color: var(--gray-light); /* Color de fondo claro al pasar el ratón */
+    background-color: var(--gray-light);
 }
 
 .status-dot.active {
@@ -168,5 +128,37 @@ footer {
 }
 
 .status-dot.inactive {
-    color: #E11D48; /* Rojo para el estado inactivo */
+    color: #E11D48;
+}
+
+footer {
+    background: var(--bg-dark-100);
+    color: var(--text-dark);
+    padding: 20px 0;
+    text-align: center;
+}
+
+.footer-links a {
+    color: var(--accent);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: var(--primary-dark);
+}
+
+.info ul {
+    list-style: none;
+    padding: 0;
+    color: var(--text-dark);
+}
+
+.info ul li::before {
+    content: "🍴";
+    margin-right: 10px;
+}
+
+#content {
+    min-height: 100vh;
 }

@@ -36,7 +36,7 @@ export class ListarMeserosComponent implements OnInit {
 
   eliminarMesero(id: string | undefined): void {
     if (id) {
-      if (confirm('¿Estás seguro de que deseas eliminar este mesero?')) {
+      if (confirm('¿Estás seguro de eliminar este mesero?')) {
         this.meseroService.deleteMesero(id).subscribe({
           next: (response: any) => {
             this.meseros = this.meseros.filter(m => m._id !== id);

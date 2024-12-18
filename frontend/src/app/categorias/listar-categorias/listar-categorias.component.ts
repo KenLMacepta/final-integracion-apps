@@ -18,9 +18,11 @@ export class ListarCategoriasComponent {
   constructor(private categoriaService: CategoriaService, private router: Router) { }
 
   ngOnInit(): void {
-    this.cargarCategorias();  // Cargar la lista de meseros al iniciar el componente
+    this.cargarCategorias(); 
   }
 
+
+  
   cargarCategorias() {
     this.categoriaService.getCategorias().subscribe({
       next: (response: any) => {
@@ -35,7 +37,7 @@ export class ListarCategoriasComponent {
 
   eliminarCategoria(id: string | undefined): void {
     if (id) {
-      if (confirm('¿Estás seguro de que deseas eliminar este mesero?')) {
+      if (confirm('¿Estás seguro de eliminar esta categoría?')) {
         this.categoriaService.deleteCategoria(id).subscribe({
           next: (response: any) => {
             this.categoria = this.categoria.filter(m => m._id !== id);
