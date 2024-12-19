@@ -1,7 +1,7 @@
 const MeseroModel = require('../models/meseroModel.js');
 const jwtToken = require('jsonwebtoken');
 const settings = require('../global/global');
-const bcryptUtil = require('bcryptjs');
+const bcrypt = require('bcryptjs');
 
 const crearMesero = async (req, res) => {
   try {

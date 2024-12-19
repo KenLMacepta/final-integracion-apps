@@ -15,22 +15,23 @@ import { userGuardGuard } from './services/user-guard.guard';
 import { AddPlatosComponent } from './platos/add-platos/add-platos.component';
 import { ListarPlatosComponent } from './platos/listar-platos/listar-platos.component';
 import { UpdatePlatoComponent } from './platos/update-platos/update-platos.component';
-
+import { AddOrdenComponent } from './orden/add-orden/add-orden.component';
 
 export const routes: Routes = [
-    {path: '', component: LoginComponent},
-    {path: 'home', component: HomeComponent, canActivate: [userGuardGuard]},
-    {path: 'meseros', component: ListarMeserosComponent, canActivate: [userGuardGuard]},
-    {path: 'addMesero', component: AddMeserosComponent, canActivate: [userGuardGuard]},
-    {path: 'updateMesero/:id', component: UpdateMeseroComponent, canActivate: [userGuardGuard]},
-    {path: 'clientes', component: ListarClientesComponent, canActivate: [userGuardGuard]},
-    {path: 'addCliente', component: AddClientesComponent, canActivate: [userGuardGuard]},
-    {path: 'updateCliente/:id', component: UpdateClienteComponent, canActivate: [userGuardGuard]},
-    {path: 'categorias', component: ListarCategoriasComponent, canActivate: [userGuardGuard]},
-    {path: 'addCategoria', component: AddCategoriasComponent, canActivate: [userGuardGuard]},
-    {path: 'updateCategoria/:id', component: UpdateCategoriaComponent, canActivate: [userGuardGuard]},
+    { path: '', component: LoginComponent },
+    { path: 'home', component: HomeComponent, canActivate: [userGuardGuard] },
+    { path: 'meseros', component: ListarMeserosComponent, canActivate: [userGuardGuard] },
+    { path: 'addMesero', component: AddMeserosComponent, canActivate: [userGuardGuard] },
+    { path: 'updateMesero/:id', component: UpdateMeseroComponent, canActivate: [userGuardGuard] },
+    { path: 'clientes', component: ListarClientesComponent, canActivate: [userGuardGuard] },
+    { path: 'addCliente', component: AddClientesComponent, canActivate: [userGuardGuard] },
+    { path: 'updateCliente/:id', component: UpdateClienteComponent, canActivate: [userGuardGuard] },
+    { path: 'categorias', component: ListarCategoriasComponent, canActivate: [userGuardGuard] },
+    { path: 'addCategoria', component: AddCategoriasComponent, canActivate: [userGuardGuard] },
+    { path: 'updateCategoria/:id', component: UpdateCategoriaComponent, canActivate: [userGuardGuard] },
     { path: 'platos', component: ListarPlatosComponent },
     { path: 'platos/add', component: AddPlatosComponent },
     { path: 'platos/update/:id', component: UpdatePlatoComponent },
-    {path:'**', component: ErrorComponent}
+    { path: 'ordenes/add', component: AddOrdenComponent, canActivate: [userGuardGuard] },
+    { path: '**', component: ErrorComponent },
 ];
