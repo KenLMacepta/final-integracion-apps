@@ -1,7 +1,7 @@
 const express = require('express');
 const connectDB = require('./database/db');
 const MeseroModel = require('./models/meseroModel.js');
-const bcrypt = require('bcryptjs');  // Asegúrate de importar bcryptjs aquí
+const bcrypt = require('bcryptjs'); 
 
 const bodyParser = require('body-parser');
 const app = express();
